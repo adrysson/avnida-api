@@ -45,7 +45,7 @@ class CreateUsers extends AbstractMigration
         $table->addColumn('creci', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => null,
+            'null' => true,
         ]);
         $table->addColumn('estado_id', 'integer', [
             'default' => null,

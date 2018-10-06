@@ -137,11 +137,11 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['tipo_id'], 'UsersTipos'));
+        $rules->add($rules->existsIn(['tipo_id'], 'Tipos'));
         $rules->add($rules->existsIn(['estado_id'], 'Estados'));
         $rules->add($rules->existsIn(['endereco_id'], 'Enderecos'));
-        $rules->add($rules->existsIn(['grupo_id'], 'UsersGrupos'));
-        $rules->add($rules->existsIn(['status_id'], 'UsersStatus'));
+        $rules->add($rules->existsIn(['grupo_id'], 'Grupos'));
+        $rules->add($rules->existsIn(['status_id'], 'Status'));
 
         return $rules;
     }

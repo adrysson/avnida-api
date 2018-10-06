@@ -112,8 +112,7 @@ class UsersTable extends Table
 
         $validator
             ->boolean('email_verificado')
-            ->requirePresence('email_verificado', 'create')
-            ->notEmpty('email_verificado');
+            ->allowEmpty('email_verificado');
 
         $validator
             ->scalar('telefone')

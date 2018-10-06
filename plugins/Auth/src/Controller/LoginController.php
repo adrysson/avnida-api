@@ -33,7 +33,8 @@ class LoginController extends AppController
                 ];
                 $this->set([
                     'data' => $data,
-                    '_serialize' => ['data']
+                    'user' => $user,
+                    '_serialize' => ['data', 'user']
                 ]);
             } else{
                 return $this->response->withStatus(422)->withStringBody('Usuário ou senha inválidos');

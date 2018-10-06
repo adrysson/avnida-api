@@ -21,7 +21,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['UsersTipos', 'Estados', 'Enderecos', 'UsersGrupos', 'UsersStatus']
+            'contain' => ['Tipos', 'Estados', 'Enderecos' => ['Estados'], 'Grupos', 'Status']
         ];
         $users = $this->paginate($this->Users);
 

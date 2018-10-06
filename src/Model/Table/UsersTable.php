@@ -47,7 +47,8 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('UsersTipos', [
+        $this->belongsTo('Tipos', [
+            'className' => 'UsersTipos',
             'foreignKey' => 'tipo_id',
             'joinType' => 'INNER'
         ]);
@@ -59,11 +60,13 @@ class UsersTable extends Table
             'foreignKey' => 'endereco_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('UsersGrupos', [
+        $this->belongsTo('Grupos', [
+            'className' => 'UsersGrupos',
             'foreignKey' => 'grupo_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('UsersStatus', [
+        $this->belongsTo('Status', [
+            'className' => 'UsersStatus',
             'foreignKey' => 'status_id',
             'joinType' => 'INNER'
         ]);

@@ -52,7 +52,12 @@ class User extends Entity
      * @var array
      */
     protected $_hidden = [
-        'password'
+        'password',
+        'tipo_id',
+        'estado_id',
+        'endereco_id',
+        'grupo_id',
+        'status_id'
     ];
 
     protected function _setPassword($password)

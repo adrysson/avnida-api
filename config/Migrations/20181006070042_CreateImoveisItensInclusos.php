@@ -18,15 +18,6 @@ class CreateImoveisItensInclusos extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
-        $table->addColumn('imovel_id', 'integer', [
-            'default' => null,
-            'limit' => 11,
-            'null' => false,
-        ]);
-        $table->addForeignKey('imovel_id', 'imoveis', 'id', [
-            'delete'=> 'CASCADE',
-            'constraint' => 'fk_itens_inclusos_imoveis'
-        ]);
         $table->create();
     }
 }

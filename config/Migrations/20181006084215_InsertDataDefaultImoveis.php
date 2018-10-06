@@ -251,5 +251,6 @@ class InsertDataDefaultImoveis extends AbstractMigration
         $this->execute('DELETE FROM imoveis_diferenciais');
         $this->execute('DELETE FROM imoveis_itens_seguranca');
         $this->execute('DELETE FROM imoveis_itens_inclusos');
+        $this->execute('DELETE FROM imoveis_tipos');
     }
 }

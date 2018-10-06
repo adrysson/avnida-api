@@ -23,6 +23,11 @@ class CreateUsers extends AbstractMigration
             'limit' => 255,
             'null' => false,
         ]);
+        $table->addColumn('password', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
         $table->addColumn('email_verificado', 'boolean', [
             'default' => 0,
             'null' => false,

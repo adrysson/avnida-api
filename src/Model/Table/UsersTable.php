@@ -73,10 +73,11 @@ class UsersTable extends Table
         $this->hasMany('Anuncios', [
             'foreignKey' => 'user_id'
         ]);
-        $this->belongsToMany('Imagens', [
+        $this->hasOne('Imagens', [
+            'propertyName' => 'imagem',
+            'className' => 'UsersImagens',
             'foreignKey' => 'user_id',
-            'targetForeignKey' => 'imagen_id',
-            'joinTable' => 'users_imagens'
+            'targetForeignKey' => 'imagem_id',
         ]);
     }
 

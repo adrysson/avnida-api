@@ -15,7 +15,7 @@ class CreateEnderecos extends AbstractMigration
         $table = $this->table('enderecos');
         $table->addColumn('logradouro', 'string', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 100,
             'null' => true,
         ]);
         $table->addColumn('cep', 'string', [
@@ -30,12 +30,12 @@ class CreateEnderecos extends AbstractMigration
         ]);
         $table->addColumn('bairro', 'string', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 100,
             'null' => true,
         ]);
         $table->addColumn('localidade', 'string', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 100,
             'null' => true,
         ]);
         $table->addColumn('estado_id', 'integer', [
@@ -50,7 +50,7 @@ class CreateEnderecos extends AbstractMigration
         ]);
         $table->addColumn('localizacao', 'string', [
             'default' => null,
-            'limit' => 255,
+            'limit' => 100,
             'null' => true,
         ]);
         $table->addColumn('numero', 'integer', [

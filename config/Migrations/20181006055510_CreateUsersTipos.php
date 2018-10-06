@@ -12,12 +12,12 @@ class CreateUsersTipos extends AbstractMigration
      */
     public function change()
     {
-        $this->table('users_tipos')
-          ->addColumn('nome', 'string', [
-              'default' => null,
-              'limit' => 255,
-              'null' => false,
-          ])
-          ->create();
+        $table = $this->table('users_tipos');
+        $table->addColumn('nome', 'string', [
+            'default' => null,
+            'limit' => 50,
+            'null' => false,
+        ]);
+        $table->create();
     }
 }

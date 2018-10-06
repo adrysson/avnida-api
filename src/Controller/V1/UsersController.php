@@ -85,24 +85,23 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Imagens']
+            'contain' => ['Enderecos']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+        if ($this->request->is(['patch', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Enderecos']]);
+            if ($user_saved = $this->Users->save($user)) {
+                $this->set([
+                    'user' => $user_saved,
+                    '_serialize' => ['user']
+                ]);
+            }else{
+                $this->response = $this->response->withStatus(422);
+                $this->set([
+                    'errors' => $user->errors(),
+                    '_serialize' => ['errors']
+                ]);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $usersTipos = $this->Users->UsersTipos->find('list', ['limit' => 200]);
-        $estados = $this->Users->Estados->find('list', ['limit' => 200]);
-        $enderecos = $this->Users->Enderecos->find('list', ['limit' => 200]);
-        $usersGrupos = $this->Users->UsersGrupos->find('list', ['limit' => 200]);
-        $usersStatus = $this->Users->UsersStatus->find('list', ['limit' => 200]);
-        $imagens = $this->Users->Imagens->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'usersTipos', 'estados', 'enderecos', 'usersGrupos', 'usersStatus', 'imagens'));
     }
 
     /**
@@ -114,14 +113,13 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['delete']);
         $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
+        $deleted = $this->Users->delete($user);
+        $this->set([
+            'user' => $user,
+            'deleted' => $deleted,
+            '_serialize' => ['user', 'deleted']
+        ]);
     }
 }

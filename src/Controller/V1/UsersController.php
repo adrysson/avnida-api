@@ -21,7 +21,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Tipos', 'Estados', 'Enderecos', 'Grupos', 'Status']
+            'contain' => ['Tipos', 'Estados', 'Enderecos' => ['Estados'], 'Grupos', 'Status']
         ];
         $users = $this->paginate($this->Users);
 
@@ -61,7 +61,6 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Enderecos']]);
             if ($user_saved = $this->Users->save($user)) {
-                die();
                 $this->set([
                     'user' => $user_saved,
                     '_serialize' => ['user']

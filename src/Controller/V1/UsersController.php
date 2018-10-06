@@ -21,7 +21,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Tipos', 'Estados', 'Enderecos' => ['Estados'], 'Grupos', 'Status']
+            'contain' => ['Tipos', 'Estados', 'Enderecos', 'Grupos', 'Status']
         ];
         $users = $this->paginate($this->Users);
 
@@ -59,21 +59,21 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Enderecos']]);
+            if ($user_saved = $this->Users->save($user)) {
+                die();
+                $this->set([
+                    'user' => $user_saved,
+                    '_serialize' => ['user']
+                ]);
+            }else{
+                $this->response = $this->response->withStatus(422);
+                $this->set([
+                    'errors' => $user->errors(),
+                    '_serialize' => ['errors']
+                ]);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $usersTipos = $this->Users->UsersTipos->find('list', ['limit' => 200]);
-        $estados = $this->Users->Estados->find('list', ['limit' => 200]);
-        $enderecos = $this->Users->Enderecos->find('list', ['limit' => 200]);
-        $usersGrupos = $this->Users->UsersGrupos->find('list', ['limit' => 200]);
-        $usersStatus = $this->Users->UsersStatus->find('list', ['limit' => 200]);
-        $imagens = $this->Users->Imagens->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'usersTipos', 'estados', 'enderecos', 'usersGrupos', 'usersStatus', 'imagens'));
     }
 
     /**

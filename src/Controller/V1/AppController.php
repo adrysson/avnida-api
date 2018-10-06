@@ -49,16 +49,19 @@ class AppController extends Controller
             'authenticate' => [
                 'Form' => [
                     'fields' => [
-                        'username' => 'email'
+                        'username' => 'email',
+                        'password' => 'password'
                     ]
                 ],
                 'ADmad/JwtAuth.Jwt' => [
                     'userModel' => 'Users',
                     'fields' => [
-                        'username' => 'email'
-                    ]
+                        'id' => 'id'
+                    ],
+                    'parameter' => '_token',
                 ]
-            ]
+            ],
+            'checkAuthIn' => 'Controller.initialize',
         ]);
 
         /*

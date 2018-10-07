@@ -35,4 +35,10 @@ class Anuncio extends Entity
     protected $_accessible = [
         '*' => true
     ];
+
+    protected $_hidden = [
+        'imovel_id',
+        'status_id',
+        'user_id',
+    ];
 }

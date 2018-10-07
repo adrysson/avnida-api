@@ -45,6 +45,7 @@ class AnunciosTable extends Table
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Imoveis', [
+            'propertyName' => 'imovel',
             'foreignKey' => 'imovel_id',
             'joinType' => 'INNER'
         ]);

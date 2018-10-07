@@ -61,7 +61,7 @@ class AnunciosTable extends Table
         $this->belongsToMany('TiposNegociacao', [
             'className' => 'AnunciosTiposNegociacao',
             'foreignKey' => 'anuncio_id',
-            'targetForeignKey' => 'anuncios_tipos_negociacao_id',
+            'targetForeignKey' => 'tipo_negociacao_id',
             'joinTable' => 'anuncios_anuncios_tipos_negociacao'
         ]);
     }

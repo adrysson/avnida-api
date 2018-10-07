@@ -44,4 +44,10 @@ class Imovel extends Entity
     protected $_accessible = [
         '*' => true
     ];
+
+    protected $_hidden = [
+        'endereco_id',
+        'imagem_id',
+        'tipo_id',
+    ];
 }

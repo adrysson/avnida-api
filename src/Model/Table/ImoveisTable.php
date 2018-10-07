@@ -41,6 +41,7 @@ class ImoveisTable extends Table
         parent::initialize($config);
 
         $this->setTable('imoveis');
+        $this->setEntityClass('App\Model\Entity\Imovel');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
@@ -48,37 +49,43 @@ class ImoveisTable extends Table
             'foreignKey' => 'endereco_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Imagens', [
+        $this->belongsTo('Imagem', [
+            'className' => 'Imagens',
             'foreignKey' => 'imagem_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('ImoveisTipos', [
+        $this->belongsTo('Tipos', [
+            'className' => 'ImoveisTipos',
             'foreignKey' => 'tipo_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsToMany('Imagens', [
-            'foreignKey' => 'imovei_id',
-            'targetForeignKey' => 'imagen_id',
+            'foreignKey' => 'imovel_id',
+            'targetForeignKey' => 'imagem_id',
             'joinTable' => 'imoveis_imagens'
         ]);
-        $this->belongsToMany('ImoveisAcessos', [
-            'foreignKey' => 'imovei_id',
-            'targetForeignKey' => 'imoveis_acesso_id',
+        $this->belongsToMany('Acessos', [
+            'className' => 'ImoveisAcessos',
+            'foreignKey' => 'imovel_id',
+            'targetForeignKey' => 'acesso_id',
             'joinTable' => 'imoveis_imoveis_acessos'
         ]);
-        $this->belongsToMany('ImoveisDiferenciais', [
-            'foreignKey' => 'imovei_id',
-            'targetForeignKey' => 'imoveis_diferenciai_id',
+        $this->belongsToMany('Diferenciais', [
+            'className' => 'ImoveisDiferenciais',
+            'foreignKey' => 'imovel_id',
+            'targetForeignKey' => 'diferencial_id',
             'joinTable' => 'imoveis_imoveis_diferenciais'
         ]);
-        $this->belongsToMany('ImoveisItensInclusos', [
-            'foreignKey' => 'imovei_id',
-            'targetForeignKey' => 'imoveis_itens_incluso_id',
+        $this->belongsToMany('ItensInclusos', [
+            'className' => 'ImoveisItensInclusos',
+            'foreignKey' => 'imovel_id',
+            'targetForeignKey' => 'item_incluso_id',
             'joinTable' => 'imoveis_imoveis_itens_inclusos'
         ]);
-        $this->belongsToMany('ImoveisItensSeguranca', [
-            'foreignKey' => 'imovei_id',
-            'targetForeignKey' => 'imoveis_itens_seguranca_id',
+        $this->belongsToMany('ItensSeguranca', [
+            'className' => 'ImoveisItensSeguranca',
+            'foreignKey' => 'imovel_id',
+            'targetForeignKey' => 'item_seguranca_id',
             'joinTable' => 'imoveis_imoveis_itens_seguranca'
         ]);
     }

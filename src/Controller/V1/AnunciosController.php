@@ -41,7 +41,12 @@ class AnunciosController extends AppController
     public function view($id = null)
     {
         $anuncio = $this->Anuncios->get($id, [
-            'contain' => ['Imoveis', 'Status', 'Users', 'TiposNegociacao']
+            'contain' => [
+                'Imoveis' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Enderecos', 'Imagem', 'Tipos'],
+                'Status',
+                'Users',
+                'TiposNegociacao'
+            ]
         ]);
 
         $this->set([

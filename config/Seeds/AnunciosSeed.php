@@ -70,6 +70,15 @@ class AnunciosSeed extends AbstractSeed
             ];
         }
 
+        for ($i=1; $i < 5; $i++) {
+            for ($j=0; $j < 2; $j++) {
+                $anuncios_tipos_negociacao[] = [
+                    'anuncio_id' => $i,
+                    'tipo_negociacao_id' => rand(1, 4),
+                ];
+            }
+        }
+
         $table = $this->table('enderecos');
         $table->insert($enderecos)->save();
 
@@ -81,6 +90,9 @@ class AnunciosSeed extends AbstractSeed
 
         $table = $this->table('anuncios');
         $table->insert($anuncios)->save();
+
+        $table = $this->table('anuncios_anuncios_tipos_negociacao');
+        $table->insert($anuncios_tipos_negociacao)->save();
 
     }
 }

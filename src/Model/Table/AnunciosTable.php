@@ -111,6 +111,6 @@ class AnunciosTable extends Table
     public function afterDelete($anuncio)
     {
         $imovel = $this->Imoveis->get($anuncio->_data['entity']['imovel_id']);
-        $this->Imoveis->delete($imovel);
+        return $this->Imoveis->delete($imovel);
     }
 }

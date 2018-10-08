@@ -145,4 +145,11 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    public function afterDelete($user)
+    {
+        $endereco = $this->Enderecos->get($user->_data['entity']['endereco_id']);
+        return $this->Enderecos->delete($endereco);
+    }
+
 }

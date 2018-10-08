@@ -165,9 +165,8 @@ class ImoveisTable extends Table
     public function afterDelete($anuncio)
     {
         $imovel = $this->Enderecos->get($anuncio->_data['entity']['endereco_id']);
-        $this->Enderecos->delete($imovel);
         $imagem = $this->Imagem->get($anuncio->_data['entity']['imagem_id']);
-        $this->Imagem->delete($imagem);
+        return $this->Enderecos->delete($imovel) && $this->Imagem->delete($imagem);
     }
 
 }

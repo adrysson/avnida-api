@@ -34,14 +34,14 @@ class AnunciosSeed extends AbstractSeed
             ];
         };
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             $imagens[] = [
                 'id'        => $i,
                 'arquivo'   => "imovel-seed-$i.png",
             ];
         }
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             $imoveis[] = [
                 'id'            => $i,
                 'area_total'    => $area_total = rand(80, 150),
@@ -59,7 +59,7 @@ class AnunciosSeed extends AbstractSeed
             ];
         }
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             $anuncios[] = [
                 'id'=> $i,
                 'titulo' => $faker->sentence,
@@ -70,7 +70,7 @@ class AnunciosSeed extends AbstractSeed
             ];
         }
 
-        for ($i=1; $i < 5; $i++) {
+        for ($i=1; $i <= 5; $i++) {
             for ($j=0; $j < 2; $j++) {
                 $anuncios_tipos_negociacao[] = [
                     'anuncio_id' => $i,

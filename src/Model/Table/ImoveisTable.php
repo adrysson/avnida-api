@@ -47,7 +47,7 @@ class ImoveisTable extends Table
 
         $this->belongsTo('Enderecos', [
             'foreignKey' => 'endereco_id',
-            'joinType' => 'INNER'
+            'joinType' => 'INNER',
         ]);
         $this->belongsTo('Imagem', [
             'className' => 'Imagens',
@@ -161,4 +161,13 @@ class ImoveisTable extends Table
 
         return $rules;
     }
+
+    public function afterDelete($anuncio)
+    {
+        $imovel = $this->Enderecos->get($anuncio->_data['entity']['endereco_id']);
+        $this->Enderecos->delete($imovel);
+        $imagem = $this->Imagem->get($anuncio->_data['entity']['imagem_id']);
+        $this->Imagem->delete($imagem);
+    }
+
 }

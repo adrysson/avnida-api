@@ -107,4 +107,10 @@ class AnunciosTable extends Table
 
         return $rules;
     }
+
+    public function afterDelete($anuncio)
+    {
+        $imovel = $this->Imoveis->get($anuncio->_data['entity']['imovel_id']);
+        $this->Imoveis->delete($imovel);
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\V1;
 
-use App\Controller\AppController;
+use App\Controller\V1\AppController;
 
 /**
  * Anuncios Controller
@@ -27,7 +27,7 @@ class AnunciosController extends AppController
 
         $this->set([
             'anuncios' => $anuncios,
-            '_serialize' => ['anuncios']
+            '_serialize' => 'anuncios'
         ]);
     }
 
@@ -42,7 +42,7 @@ class AnunciosController extends AppController
     {
         $anuncio = $this->Anuncios->get($id, [
             'contain' => [
-                'Imoveis' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Enderecos', 'Imagem', 'Tipos'],
+                'Imoveis' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Enderecos' => 'Estados', 'Imagem', 'Tipos'],
                 'Status',
                 'Users',
                 'TiposNegociacao'
@@ -51,7 +51,7 @@ class AnunciosController extends AppController
 
         $this->set([
             'anuncio' => $anuncio,
-            '_serialize' => ['anuncio']
+            '_serialize' => 'anuncio'
         ]);
     }
 
@@ -64,17 +64,23 @@ class AnunciosController extends AppController
     {
         $anuncio = $this->Anuncios->newEntity();
         if ($this->request->is('post')) {
-            $anuncio = $this->Anuncios->patchEntity($anuncio, $this->request->getData(), ['associated'=>['Imoveis']]);
+            $anuncio = $this->Anuncios->patchEntity($anuncio, $this->request->getData(), [
+                'associated' => [
+                    'Imoveis' => [
+                        'associated' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Imagem', 'Enderecos', 'Tipos']
+                    ]
+                ]
+            ]);
             if ($anuncio_saved = $this->Anuncios->save($anuncio)) {
                 $this->set([
                     'anuncio' => $anuncio_saved,
-                    '_serialize' => ['anuncio']
+                    '_serialize' => 'anuncio'
                 ]);
             }else{
                 $this->response = $this->response->withStatus(422);
                 $this->set([
                     'errors' => $anuncio->errors(),
-                    '_serialize' => ['errors']
+                    '_serialize' => 'errors'
                 ]);
             }
         }
@@ -90,20 +96,31 @@ class AnunciosController extends AppController
     public function edit($id = null)
     {
         $anuncio = $this->Anuncios->get($id, [
-            'contain' => ['TiposNegociacao']
+            'contain' => [
+                'Imoveis' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Enderecos' => 'Estados', 'Imagem', 'Tipos'],
+                'Status',
+                'Users',
+                'TiposNegociacao'
+            ]
         ]);
         if ($this->request->is(['patch', 'put'])) {
-            $anuncio = $this->Anuncios->patchEntity($anuncio, $this->request->getData(), ['associated'=>['Imoveis']]);
+            $anuncio = $this->Anuncios->patchEntity($anuncio, $this->request->getData(), [
+                'associated' => [
+                    'Imoveis' => [
+                        'associated' => ['Imagens', 'Acessos', 'Diferenciais', 'ItensInclusos', 'ItensSeguranca', 'Imagem', 'Enderecos', 'Tipos']
+                    ]
+                ]
+            ]);
             if ($anuncio_saved = $this->Anuncios->save($anuncio)) {
                 $this->set([
                     'anuncio' => $anuncio_saved,
-                    '_serialize' => ['anuncio']
+                    '_serialize' => 'anuncio'
                 ]);
             }else{
                 $this->response = $this->response->withStatus(422);
                 $this->set([
                     'errors' => $anuncio->errors(),
-                    '_serialize' => ['errors']
+                    '_serialize' => 'errors'
                 ]);
             }
         }
@@ -118,7 +135,7 @@ class AnunciosController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $this->request->allowMethod(['delete']);
         $anuncio = $this->Anuncios->get($id);
         $deleted = $this->Anuncios->delete($anuncio);
         $this->set([

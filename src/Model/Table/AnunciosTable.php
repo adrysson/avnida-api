@@ -102,7 +102,7 @@ class AnunciosTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['imovel_id'], 'Imoveis'));
-        $rules->add($rules->existsIn(['status_id'], 'AnunciosStatus'));
+        $rules->add($rules->existsIn(['status_id'], 'Status'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
         return $rules;

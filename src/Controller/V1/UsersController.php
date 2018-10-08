@@ -21,13 +21,13 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Tipos', 'Estados', 'Enderecos' => ['Estados'], 'Grupos', 'Status']
+            'contain' => ['Tipos', 'Estados', 'Enderecos' => 'Estados', 'Grupos', 'Status']
         ];
         $users = $this->paginate($this->Users);
 
         $this->set([
             'users' => $users,
-            '_serialize' => ['users']
+            '_serialize' => 'users'
         ]);
     }
 
@@ -41,12 +41,12 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Tipos', 'Estados', 'Enderecos' => ['Estados'], 'Grupos', 'Status', 'Imagens', 'Anuncios']
+            'contain' => ['Tipos', 'Estados', 'Enderecos' => 'Estados', 'Grupos', 'Status', 'Imagens', 'Anuncios']
         ]);
 
         $this->set([
             'user' => $user,
-            '_serialize' => ['user']
+            '_serialize' => 'user'
         ]);
     }
 
@@ -59,17 +59,17 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Enderecos']]);
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => 'Enderecos']);
             if ($user_saved = $this->Users->save($user)) {
                 $this->set([
                     'user' => $user_saved,
-                    '_serialize' => ['user']
+                    '_serialize' => 'user'
                 ]);
             }else{
                 $this->response = $this->response->withStatus(422);
                 $this->set([
                     'errors' => $user->errors(),
-                    '_serialize' => ['errors']
+                    '_serialize' => 'errors'
                 ]);
             }
         }
@@ -85,20 +85,20 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Enderecos']
+            'contain' => 'Enderecos'
         ]);
         if ($this->request->is(['patch', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated'=>['Enderecos']]);
+            $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => 'Enderecos']);
             if ($user_saved = $this->Users->save($user)) {
                 $this->set([
                     'user' => $user_saved,
-                    '_serialize' => ['user']
+                    '_serialize' => 'user'
                 ]);
             }else{
                 $this->response = $this->response->withStatus(422);
                 $this->set([
                     'errors' => $user->errors(),
-                    '_serialize' => ['errors']
+                    '_serialize' => 'errors'
                 ]);
             }
         }

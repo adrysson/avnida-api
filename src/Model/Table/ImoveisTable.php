@@ -157,7 +157,7 @@ class ImoveisTable extends Table
     {
         $rules->add($rules->existsIn(['endereco_id'], 'Enderecos'));
         $rules->add($rules->existsIn(['imagem_id'], 'Imagens'));
-        $rules->add($rules->existsIn(['tipo_id'], 'ImoveisTipos'));
+        $rules->add($rules->existsIn(['tipo_id'], 'Tipos'));
 
         return $rules;
     }

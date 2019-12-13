@@ -43,7 +43,7 @@ class InsertDataDefaultUsers extends AbstractMigration
             ],
             [
                 'id'    => 3,
-                'nome'  => 'Imobiliária'
+                'nome'  => utf8_decode('Imobiliária')
             ],
             [
                 'id'    => 4,

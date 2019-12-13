@@ -15,7 +15,7 @@ class InsertDataDefaultAnuncios extends AbstractMigration
             ],
             [
                 'id'    => 2,
-                'nome'  => "Lançamento"
+                'nome'  => utf8_decode("Lançamento")
             ],
             [
                 'id'    => 3,

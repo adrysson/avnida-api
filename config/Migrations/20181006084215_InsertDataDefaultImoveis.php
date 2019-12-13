@@ -19,7 +19,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 3,
-                'nome'  => "Transporte público"
+                'nome'  => utf8_decode("Transporte público")
             ],
             [
                 'id'    => 4,
@@ -47,7 +47,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 4,
-                'nome'  => "Espaço gourmet"
+                'nome'  => utf8_decode("Espaço gourmet")
             ],
             [
                 'id'    => 5,
@@ -59,7 +59,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 7,
-                'nome'  => "Salão de festas"
+                'nome'  => utf8_decode("Salão de festas")
             ],
             [
                 'id'    => 8,
@@ -71,7 +71,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 10,
-                'nome'  => "Espaço jovem"
+                'nome'  => utf8_decode("Espaço jovem")
             ],
             [
                 'id'    => 11,
@@ -79,11 +79,11 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 12,
-                'nome'  => "Quadra de tênis"
+                'nome'  => utf8_decode("Quadra de tênis")
             ],
             [
                 'id'    => 13,
-                'nome'  => "Espaço verde"
+                'nome'  => utf8_decode("Espaço verde")
             ],
             [
                 'id'    => 14,
@@ -91,7 +91,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 15,
-                'nome'  => "Serviços públicos essenciais"
+                'nome'  => utf8_decode("Serviços públicos essenciais")
             ],
             [
                 'id'    => 16,
@@ -103,7 +103,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 18,
-                'nome'  => "Gerador elétrico"
+                'nome'  => utf8_decode("Gerador elétrico")
             ],
             [
                 'id'    => 19,
@@ -123,15 +123,15 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 23,
-                'nome'  => "Recepção"
+                'nome'  => utf8_decode("Recepção")
             ],
             [
                 'id'    => 24,
-                'nome'  => "Salão de jogos para crianças"
+                'nome'  => utf8_decode("Salão de jogos para crianças")
             ],
             [
                 'id'    => 25,
-                'nome'  => "Salão de jogos para adultos"
+                'nome'  => utf8_decode("Salão de jogos para adultos")
             ],
             [
                 'id'    => 26,
@@ -139,7 +139,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 27,
-                'nome'  => "Piscina para crianças"
+                'nome'  => utf8_decode("Piscina para crianças")
             ],
             [
                 'id'    => 28,
@@ -155,11 +155,11 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 2,
-                'nome'  => "Circuito de segurança"
+                'nome'  => utf8_decode("Circuito de segurança")
             ],
             [
                 'id'    => 3,
-                'nome'  => "Segurança 24h"
+                'nome'  => utf8_decode("Segurança 24h")
             ],
             [
                 'id'    => 4,
@@ -167,7 +167,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 5,
-                'nome'  => "Condomínio fechado"
+                'nome'  => utf8_decode("Condomínio fechado")
             ]
         ];
         $this->table('imoveis_itens_seguranca')->insert($rows)->save();
@@ -187,7 +187,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 4,
-                'nome'  => "Depósito"
+                'nome'  => utf8_decode("Depósito")
             ],
             [
                 'id'    => 5,
@@ -203,7 +203,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 8,
-                'nome'  => "Acesso à internet"
+                'nome'  => utf8_decode("Acesso à internet")
             ],
             [
                 'id'    => 9,
@@ -215,7 +215,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 11,
-                'nome'  => "Área de serviço"
+                'nome'  => utf8_decode("Área de serviço")
             ],
             [
                 'id'    => 12,
@@ -235,7 +235,7 @@ class InsertDataDefaultImoveis extends AbstractMigration
             ],
             [
                 'id'    => 3,
-                'nome'  => "Chácara"
+                'nome'  => utf8_decode("Chácara")
             ]
         ];
         $this->table('imoveis_tipos')->insert($rows)->save();

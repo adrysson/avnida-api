@@ -58,6 +58,9 @@ class CreateEnderecos extends AbstractMigration
             'limit' => 11,
             'null' => true,
         ]);
+        $table->addForeignKey('estado_id', 'estados', 'id', [
+            'constraint' => 'fk_enderecos_estados'
+        ]);
         $table->create();
     }
 }

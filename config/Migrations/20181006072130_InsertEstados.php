@@ -23,7 +23,7 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 3,
                 'uf'    => 'AP',
-                'nome'  => 'Amapá',
+                'nome'  => utf8_decode('Amapá'),
             ],
             [
                 'id'    => 4,
@@ -38,7 +38,7 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 6,
                 'uf'    => 'CE',
-                'nome'  => 'Ceará',
+                'nome'  => utf8_decode('Ceará'),
             ],
             [
                 'id'    => 7,
@@ -48,17 +48,17 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 8,
                 'uf'    => 'ES',
-                'nome'  => 'Espírito Santo',
+                'nome'  => utf8_decode('Espírito Santo'),
             ],
             [
                 'id'    => 9,
                 'uf'    => 'GO',
-                'nome'  => 'Goiás',
+                'nome'  => utf8_decode('Goiás'),
             ],
             [
                 'id'    => 10,
                 'uf'    => 'MA',
-                'nome'  => 'Maranhão',
+                'nome'  => utf8_decode('Maranhão'),
             ],
             [
                 'id'    => 11,
@@ -78,17 +78,17 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 14,
                 'uf'    => 'PA',
-                'nome'  => 'Pará',
+                'nome'  => utf8_decode('Pará'),
             ],
             [
                 'id'    => 15,
                 'uf'    => 'PB',
-                'nome'  => 'Paraíba',
+                'nome'  => utf8_decode('Paraíba'),
             ],
             [
                 'id'    => 16,
                 'uf'    => 'PR',
-                'nome'  => 'Paraná',
+                'nome'  => utf8_decode('Paraná'),
             ],
             [
                 'id'    => 17,
@@ -98,7 +98,7 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 18,
                 'uf'    => 'PI',
-                'nome'  => 'Piauí',
+                'nome'  => utf8_decode('Piauí'),
             ],
             [
                 'id'    => 19,
@@ -118,7 +118,7 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 22,
                 'uf'    => 'RO',
-                'nome'  => 'Rondônia',
+                'nome'  => utf8_decode('Rondônia'),
             ],
             [
                 'id'    => 23,
@@ -133,7 +133,7 @@ class InsertEstados extends AbstractMigration
             [
                 'id'    => 25,
                 'uf'    => 'SP',
-                'nome'  => 'São Paulo',
+                'nome'  => utf8_decode('São Paulo'),
             ],
             [
                 'id'    => 26,

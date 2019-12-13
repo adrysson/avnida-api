@@ -1,0 +1,21 @@
+<?php
+use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
+use Cake\Routing\Route\DashedRoute;
+
+Router::plugin(
+    'Auth',
+    ['path' => '/auth'],
+    function (RouteBuilder $routes) {
+        $routes->setExtensions(['json']);
+        $routes->resources('Login', [
+            'map' => [
+                'login' => [
+                    'action' => 'add',
+                    'method' => 'POST'
+                ]
+            ]
+        ]);
+        $routes->fallbacks('InflectedRoute');
+    }
+);
